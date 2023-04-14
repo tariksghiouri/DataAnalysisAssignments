@@ -5,7 +5,7 @@ from sklearn.preprocessing import StandardScaler
 from numpy.random import uniform
 from sklearn.datasets import make_blobs
 import seaborn as sns
-import random
+# import random
 
 def euclidean_distance(x, y):
     return sqrt(sum((px - py)**2  for px, py in zip(x,y)))
