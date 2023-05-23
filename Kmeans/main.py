@@ -82,9 +82,10 @@ def kMeans(data, k, n_iterations):
     return get_centroids, centroids
 
 
-n_iterations = 10  
+n_iterations = 10  # Define the number of iterations
 
-assigned_centroids, final_centroids = kMeans(data, 4, n_iterations)
+# Call the kMeans function with the desired number of clusters (k) and number of iterations (n_iterations)
+assigned_centroids, final_centroids = kMeans(data, 3, n_iterations)
 
 print("Assigned Centroids:", assigned_centroids)
 print("Final Centroids:", final_centroids)
