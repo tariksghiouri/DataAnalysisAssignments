@@ -1,6 +1,13 @@
 import math
 import numpy as np
+def display_matrix(matrix):
+    max_width = max(len(str(element)) for row in matrix for element in row)
 
+    for row in matrix:
+        formatted_row = [str(element).rjust(max_width) for element in row]
+        print(' '.join(formatted_row))
+        
+        
 def calculate_mean(data):
     # Calculate the mean along each column (feature)
     num_samples = len(data)
@@ -89,9 +96,6 @@ for sample in normalized_data:
 covariance_matrix = calculate_covariance(normalized_data)
 
 
-# print("--------------------------------------------------------")
-# print("--------------------------------------------------------")
-# print("--------------------------------------------------------")
 
 
 for row in covariance_matrix:
@@ -100,21 +104,16 @@ for row in covariance_matrix:
     
     
     
-# Step 1: Compute the eigenvalues and eigenvectors
 eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)
 
-# Step 2: Sort eigenvalues and eigenvectors in descending order
 sorted_indices = np.argsort(eigenvalues)[::-1]
 sorted_eigenvalues = eigenvalues[sorted_indices]
 sorted_eigenvectors = eigenvectors[:, sorted_indices]
 
-# Step 3: Eigenvalues represent the principal components
 
-# Step 4: Information explained by each principal component
 explained_variance_ratio = sorted_eigenvalues / np.sum(sorted_eigenvalues)
 
-# Step 5: New axes formed by principal components
-principal_components = sorted_eigenvectors.T
+principal_components = sorted_eigenvectors
 
 # Print the results
 print("Eigenvalues:")
@@ -123,3 +122,21 @@ print("Explained Variance Ratio:")
 print(explained_variance_ratio)
 print("Principal Components:")
 print(principal_components)
+
+def reduce_dimensionality(data, num_components):
+    normalized_data = normalize_data(data)
+    covariance_matrix = calculate_covariance(normalized_data)
+
+    eigenvalues, eigenvectors = np.linalg.eig(covariance_matrix)
+
+    sorted_indices = np.argsort(eigenvalues)[::-1]
+    sorted_eigenvalues = eigenvalues[sorted_indices]
+    sorted_eigenvectors = eigenvectors[:, sorted_indices]
+
+    principal_components = np.array(sorted_eigenvectors.T[:num_components, :])
+
+    reduced_data = np.dot(normalized_data, principal_components.T)
+
+    return reduced_data
+reduced_data = reduce_dimensionality(data2, 2)
+print(reduced_data)
