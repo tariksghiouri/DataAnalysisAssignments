@@ -15,7 +15,7 @@ def euclidean_distance(row1, row2):
 def calc_distance(X1, X2):
     return (sum((X1 - X2) ** 2)) ** 0.5
 
-
+# matrice
 data = np.array([[1, 5],
                  [3, 1],
                  [4, 2],
@@ -82,9 +82,8 @@ def kMeans(data, k, n_iterations):
     return get_centroids, centroids
 
 
-n_iterations = 10  # Define the number of iterations
+n_iterations = 10  # number of iterations
 
-# Call the kMeans function with the desired number of clusters (k) and number of iterations (n_iterations)
 assigned_centroids, final_centroids = kMeans(data, 3, n_iterations)
 
 print("Assigned Centroids:", assigned_centroids)
