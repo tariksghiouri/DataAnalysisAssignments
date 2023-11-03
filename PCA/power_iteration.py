@@ -20,7 +20,6 @@ def power_iteration(matrix, num_iterations):
 
 # Exemple d'utilisation
 if __name__ == "__main__":
-    # Remplacez cette matrice par la vôtre
     A = np.array([[4, -2],
                   [1,  1]])
     
