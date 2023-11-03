@@ -1,5 +1,7 @@
 import math
 import numpy as np
+import matplotlib.pyplot as plt
+
 def display_matrix(matrix):
     max_width = max(len(str(element)) for row in matrix for element in row)
 
@@ -68,7 +70,7 @@ data = [[1, 5, 3, 1],
 data2 = [[1, 2, 3, 4],
         [5, 5, 6, 7],
         [1, 4, 2, 3],
-        [5, 3, 2, 1],
+        [5, 3, 2, 1],   
         [8, 1, 2, 2]]
 
 
@@ -140,3 +142,4 @@ def reduce_dimensionality(data, num_components):
     return reduced_data
 reduced_data = reduce_dimensionality(data2, 2)
 print(reduced_data)
+
